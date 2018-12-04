@@ -2,6 +2,6 @@ package domain;
 
 public interface Identifiable extends org.springframework.hateoas.Identifiable<Long> {
 
-	public void getId(Long id);
+	public void setId(Long id);
 	
 }
