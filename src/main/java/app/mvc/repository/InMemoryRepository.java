@@ -1,4 +1,4 @@
-package repository;
+package app.mvc.repository;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import domain.Identifiable;
+import app.mvc.domain.Identifiable;
 
 
 public abstract class InMemoryRepository<T extends Identifiable> {

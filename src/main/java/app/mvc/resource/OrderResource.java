@@ -1,10 +1,10 @@
-package resource;
+package app.mvc.resource;
 
 import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import domain.Order;
+import app.mvc.domain.Order;
 
 public class OrderResource extends ResourceSupport {
 	

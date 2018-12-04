@@ -1,4 +1,4 @@
-package domain;
+package app.mvc.domain;
 
 public class Order implements Identifiable {
 

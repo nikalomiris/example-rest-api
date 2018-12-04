@@ -1,4 +1,4 @@
-package resource;
+package app.mvc.resource;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

@@ -1,8 +1,8 @@
-package repository;
+package app.mvc.repository;
 
 import org.springframework.stereotype.Repository;
 
-import domain.Order;
+import app.mvc.domain.Order;
 
 @Repository // allows our class to be injected into other classes by the Spring DI framework,
 			// but also includes additional database-related capabilities

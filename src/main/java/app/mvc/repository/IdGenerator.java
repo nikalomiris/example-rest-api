@@ -1,4 +1,4 @@
-package repository;
+package app.mvc.repository;
 
 import java.util.concurrent.atomic.AtomicLong;
 

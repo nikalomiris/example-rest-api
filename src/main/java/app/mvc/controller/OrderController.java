@@ -1,4 +1,4 @@
-package controller;
+package app.mvc.controller;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,37 +15,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import domain.Order;
-import repository.OrderRepository;
-import resource.OrderResource;
-import resource.OrderResourceAssembler;
+import app.mvc.domain.Order;
+import app.mvc.repository.OrderRepository;
+import app.mvc.resource.OrderResource;
+import app.mvc.resource.OrderResourceAssembler;
 
-@CrossOrigin(origins = "*") // Provides for support of Cross Origin Resource Sharing (CORS) for our controller
-@RestController // Tells Spring that this class is a controller and will include REST endpoints
+@CrossOrigin(origins = "*")
+@RestController
 @ExposesResourceFor(Order.class)
 @RequestMapping(value = "/order", produces = "application/json")
 public class OrderController {
-	
-	@Autowired
-	private OrderRepository repository;
-	
-	@Autowired
-	private OrderResourceAssembler assembler;
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Collection<OrderResource>> findAllOrders() {
-		List<Order> orders = repository.findAll();
-		return new ResponseEntity<>(assembler.toResourceCollection(orders),
-			HttpStatus.OK);
-	}
-	
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<OrderResource> createOrder(@RequestBody Order order) {
-		Order createdOrder = repository.create(order);
-		return new ResponseEntity<>(assembler.toResource(createdOrder), HttpStatus.CREATED);
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @Autowired
+    private OrderRepository repository;
+    @Autowired
+    private OrderResourceAssembler assembler;
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Collection<OrderResource>> findAllOrders() {
+        List<Order> orders = repository.findAll();
+        return new ResponseEntity<>(assembler.toResourceCollection(orders), HttpStatus.OK);
+    }
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<OrderResource> createOrder(@RequestBody Order order) {
+        Order createdOrder = repository.create(order);
+        return new ResponseEntity<>(assembler.toResource(createdOrder), HttpStatus.CREATED);
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<OrderResource> findOrderById(@PathVariable Long id) {
         Optional<Order> order = repository.findById(id);
         if (order.isPresent()) {
